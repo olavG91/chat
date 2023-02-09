@@ -19,14 +19,14 @@ const MessageList = () => {
     return (
         <div>
             <h1>MessageList</h1>
-            <ul>
+            <div>
                 {messages.length ? messages.map((message) => (
                     <div className="message" key={message.time.toString()}>
-                        <div>{message.name}: {message.message}</div>
+                        <div><strong>{message.name}</strong>: {message.message}</div>
                         <div>{message.time.toString()}</div>
                     </div>
                 )) : <div className="message">Inga resultat</div>}
-            </ul>
+            </div>
         </div>
     )
 

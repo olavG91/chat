@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
 }
 
 .chat {
@@ -13,14 +14,20 @@ body {
   align-items: center;
 }
 
+form {
+  margin: 0;
+  padding: 0;
+}
 .message {
   background-color: #abcbdc;
   margin-bottom: 10px;
   border-radius: 10px;
   padding: 10px;
+  width: 100%;
 }
 
-input,textarea {
+input,
+textarea {
   padding: 10px;
   width: 100%;
 }
