@@ -7,15 +7,15 @@ class ChatBox extends React.Component {
 
         this.state = {
             message: '',
-            messageRef: React.createRef()
+            messageRef: React.createRef(),
+            displayName: props.displayName
         };
     }
-    state = {}
 
-    addDataToFirebase(name, message, time) {
+    addDataToFirebase(message, time) {
         db.collection("chat")
             .add({
-                name: name,
+                name: this.props.displayName,
                 message: message,
                 time: time
             })
@@ -29,7 +29,7 @@ class ChatBox extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.addDataToFirebase(this.state.name, this.state.message, new Date().toLocaleString());
+        this.addDataToFirebase(this.state.message, new Date().toLocaleString());
         this.setState({ message: "" });
         this.state.messageRef.current.focus();
     }
@@ -42,12 +42,6 @@ class ChatBox extends React.Component {
         return (<div>
             <h1>Chat</h1>
             <form>
-                <div>
-                    <label htmlFor="name">Namn:</label>
-                </div>
-                <div>
-                    <input type="text" value={this.state.name} onChange={this.handleChange} name="name"></input>
-                </div>
                 <div>
                     <label htmlFor="message">Meddelande:</label>
                 </div>
